@@ -20,7 +20,7 @@ def clean_data():
     patron =r'\d{4}'
     df['fecha_de_beneficio'] = df['fecha_de_beneficio'].apply(lambda x: '/'.join(x.split('/')[::-1]) if re.match(patron, x) else x)
     df['fecha_de_beneficio'] = pd.to_datetime(df['fecha_de_beneficio']).dt.strftime('%d/%m/%Y')
-    df['barrio'] = df['barrio'].str.replace('bel¿n', 'belen').str.replace('antonio nari¿o', 'antonio nariño').str.replace('san jose de la cima no. ', 'san jose de la cima no.').str.replace('el salado ', 'el salado')
+   # df['barrio'] = df['barrio'].str.replace('bel¿n', 'belen').str.replace('antonio nari¿o', 'antonio nariño').str.replace('san jose de la cima no. ', 'san jose de la cima no.').str.replace('el salado ', 'el salado')
     df['monto_del_credito'] = df['monto_del_credito'].str.replace('$', '').str.replace('.00', '').str.replace(',', '').astype(int)
     df = df.drop_duplicates()
     return df
